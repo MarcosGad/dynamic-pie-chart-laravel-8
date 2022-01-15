@@ -6,6 +6,10 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Product;
 
+use Illuminate\Support\Str;
+use Cviebrock\EloquentSluggable\Services\SlugService;
+
+
 class EchartController extends Controller
 {
     public function echart(Request $request)
@@ -18,5 +22,9 @@ class EchartController extends Controller
     	$grains_count = count($grains);
         //dd($fruit_count,$veg_count,$grains_count);
     	return view('echart',compact('fruit_count','veg_count','grains_count'));
+
+		//$name = Product::where('product_type','fruit')->value('name');
+		//dd(Str::slug($name , '-'));
+		//dd(SlugService::createSlug(Product::class, 'product_type', $name));
     }
 }
